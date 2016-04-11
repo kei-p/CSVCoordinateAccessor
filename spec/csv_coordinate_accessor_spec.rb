@@ -38,6 +38,16 @@ describe CSVCoordinateAccessor do
       it { expect(subject).to eq([1, 0]) }
     end
 
+    context '2a' do
+      let(:cord) { '2a' }
+      it { expect(subject).to eq([1, 0]) }
+    end
+
+    context 'A2' do
+      let(:cord) { 'A2' }
+      it { expect(subject).to eq([1, 0]) }
+    end
+
     context '3B' do
       let(:cord) { '3B' }
       it { expect(subject).to eq([2, 1]) }
@@ -55,6 +65,11 @@ describe CSVCoordinateAccessor do
 
     context '12AA' do
       let(:cord) { '12AA' }
+      it { expect(subject).to eq([11, 26]) }
+    end
+
+    context 'AA12' do
+      let(:cord) { 'AA12' }
       it { expect(subject).to eq([11, 26]) }
     end
   end

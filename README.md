@@ -29,15 +29,15 @@ csv = CSV.read('./spec/fixtures/sample.csv').extend CSVCoordinateAccessor
 csv = csv.extend CSVCoordinateAccessor
 
 ## get value with coordinate
-csv.get('2A')
+csv.get('A2')
 => "1"
-csv.get('2B')
+csv.get('B2')
 => "fruit"
-csv.get('2C')
+csv.get('C2')
 => "apple"
 
 ## set value with coordinate
-csv.set('2C', 'pineapple')
+csv.set('C2', 'pineapple')
 
 csv
 => [["id", "category", "name"], ["1", "fruit", "pineapple"], ["2", "furit", "orange"], ["3", "fruit", "banana"]]

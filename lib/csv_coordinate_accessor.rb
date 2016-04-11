@@ -17,10 +17,15 @@ module CSVCoordinateAccessor
   end
 
   def cord2index(cord)
-    m = cord.match(/(\d+)(\w+)/)
+    m = cord.match(/(?<codes>[A-Za-z]+)(?<nums>\d+)/) \
+        || cord.match(/(?<nums>\d+)(?<codes>[A-Za-z]+)/)
 
-    r = m[1].to_i - 1
-    c = code2index(m[2])
+    raise ArgumentError, "#{cord} is invalid" unless m
+
+    p m
+
+    r = m['nums'].to_i - 1
+    c = code2index(m['codes'])
     [r, c]
   end
 
@@ -41,7 +46,7 @@ module CSVCoordinateAccessor
   end
 
   def code2index(code)
-    chars = code.split('')
+    chars = code.upcase.split('')
     num = 0
     chars.each.with_index do |c, i|
       n = c.ord - CODES.first.ord
