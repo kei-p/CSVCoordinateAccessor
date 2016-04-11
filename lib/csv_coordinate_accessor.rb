@@ -22,8 +22,6 @@ module CSVCoordinateAccessor
 
     raise ArgumentError, "#{cord} is invalid" unless m
 
-    p m
-
     r = m['nums'].to_i - 1
     c = code2index(m['codes'])
     [r, c]
