@@ -22,7 +22,7 @@ Or install it yourself as:
 
 ```
 require 'csv_coordinate_accessor'
-csv = CSV.read('./spec/fixtures/sample.csv').extend CSVCoordinateAccessor
+csv = CSV.read('./spec/fixtures/sample.csv')
 => [["id", "category", "name"], ["1", "fruit", "apple"], ["2", "furit", "orange"], ["3", "fruit", "banana"]]
 
 ## Extend module
