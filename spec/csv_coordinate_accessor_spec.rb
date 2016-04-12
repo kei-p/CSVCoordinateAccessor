@@ -20,6 +20,20 @@ describe CSVCoordinateAccessor do
     end
   end
 
+  describe '#gets' do
+    subject { target.gets(cord) }
+
+    context '2B..3C' do
+      let(:cord) { ('2B'..'3C') }
+      it { expect(subject).to eq([['fruit', 'apple'], ['fruit', 'orange']]) }
+    end
+
+    context '2B..103ZZ' do
+      let(:cord) { ('2B'..'103ZZ') }
+      it { expect(subject).to eq([['fruit', 'apple'], ['fruit', 'orange'], ['fruit', 'banana']]) }
+    end
+  end
+
   describe '#set' do
     subject { target.set(cord, value) }
 
