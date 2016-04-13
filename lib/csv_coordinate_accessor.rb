@@ -10,6 +10,21 @@ module CSVCoordinateAccessor
     self[r][c]
   end
 
+  def gets(cord_range)
+    s = cord2index(cord_range.first)
+    e = cord2index(cord_range.last)
+
+    r_range = Range.new(s[0], e[0], cord_range.exclude_end?)
+    c_range = Range.new(s[1], e[1], cord_range.exclude_end?)
+
+    values = []
+    r_range.each do |r|
+      break unless self[r]
+      values << self[r][c_range]
+    end
+    values
+  end
+
   def set(cord,value)
     r,c = cord2index(cord)
     self[r][c] = value.to_s
